@@ -1,4 +1,4 @@
-interface Users {
+interface UsersData {
 	id: string,
 	username: string
 	surname: string,
@@ -7,7 +7,7 @@ interface Users {
 
 }
 
-export const users: Users[] = [
+export const users: UsersData[] = [
 	{
 		id: '1',
 		username: 'predrag',

@@ -1,4 +1,4 @@
-interface Emails {
+interface EmailsData {
   id: string,
   from: string,
   to: string,
@@ -6,7 +6,7 @@ interface Emails {
   body: string
 }
 
-export const emails: Emails[] = [
+export const emails: EmailsData[] = [
 	{	id: '1',
 		from: '1',
 		to: '2',

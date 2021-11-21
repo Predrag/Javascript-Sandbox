@@ -1,5 +1,5 @@
 import express, {Request, Response} from 'express';
-import {users} from '../fixtures/users';
+import {users} from '../fixtures/users-data';
 import requestAuth from '../lib/auth/require-auth';
 
 const userRouter = express.Router();

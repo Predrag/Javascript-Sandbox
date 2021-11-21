@@ -1,5 +1,5 @@
 import express, {Request, Response} from 'express';
-import {emails} from '../fixtures/emails';
+import {emails} from '../fixtures/emails-data';
 import requestAuth from '../lib/auth/require-auth';
 
 const emailRouter = express.Router();
