@@ -1,6 +1,5 @@
 import express, {Request, Response} from 'express';
 import {emails} from '../fixtures/emails-data';
-import requestAuth from '../lib/auth/require-auth';
 
 const emailRouter = express.Router();
 
@@ -14,7 +13,6 @@ const getEmailRoute = (req: Request, res: Response) => {
 	res.send(email);
 };
 
-emailRouter.use(requestAuth);
 emailRouter.get('/', getEmailsRoute);
 emailRouter.get('/:id', getEmailRoute);
 export default emailRouter;
