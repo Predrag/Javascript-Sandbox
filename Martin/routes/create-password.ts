@@ -1,7 +1,5 @@
-import express, {Request, Response} from 'express';
-
+import express, { Request, Response } from 'express';
 const createPassword = express.Router();
-
 
 const getCreateBase64Password = (req: Request, res: Response) => {
 	const header = req.headers.authorization || '';
