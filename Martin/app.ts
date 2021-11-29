@@ -10,6 +10,7 @@ import requestAuth from './lib/auth/require-auth';
 import findUserByCredentials from './lib/dao/find-user';
 
 const app = express();
+app.set('view engine', 'pug');
 const port = 3000;
 const jsonParser = bodyParser.json();
 
