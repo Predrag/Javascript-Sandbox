@@ -11,7 +11,7 @@ export const emails: EmailsData[] = [
 		from: '1',
 		to: '2',
 		subject: 'Hello!',
-		body: 'Hi, nice to meet you.'},
+		body: 'Hi, nice to meet you.' },
 	{
 		id: '2',
 		from: '2',

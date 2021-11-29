@@ -1,13 +1,8 @@
-import {Request, Response, NextFunction} from 'express';
-import {users} from '../../fixtures/users-data';
-import {comparePassword} from './hash-password';
+import { Request, Response, NextFunction } from 'express';
+import { users } from '../../fixtures/users-data';
+import { comparePassword } from './hash-password';
 
-
-const findUserByCredentials = ({username, password}) =>
-	users.find(user => user.username === username && user.password === password);
-
-
-async function basicAuth(req: Request, res: Response, next: NextFunction) {
+const basicAuth = (findUserByCredentials) => { return async (req: Request, res: Response, next: NextFunction) => {
 	const header = req.headers.authorization || '';
 	const [type, payload] = header.split(' ');
 	console.log(type, payload);
@@ -16,14 +11,11 @@ async function basicAuth(req: Request, res: Response, next: NextFunction) {
 		const credentials = Buffer.from(payload, 'base64').toString('ascii');
 		console.log('Credentials', credentials);
 		const [username, password] = credentials.split(':');
-
-		const hashedPassword = users.find(user => user.username === username);
-		if (hashedPassword) {
-			const encodeHash = await comparePassword(password, hashedPassword.password);
+		const UserObject = users.find(user => { return user.username === username; });
+		if (UserObject) {
+			const encodeHash = await comparePassword(password, UserObject.password);
 			if (encodeHash) {
-				const password = hashedPassword.password;
-				const user = findUserByCredentials({username, password});
-				console.log('Dnu', user);
+				findUserByCredentials(UserObject);
 				next();
 			} else {
 				console.log('Bad password of username');
@@ -40,6 +32,6 @@ async function basicAuth(req: Request, res: Response, next: NextFunction) {
 		res.sendStatus(401);
 	}
 
-}
+}; };
 
 export default basicAuth;

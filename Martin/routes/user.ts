@@ -1,5 +1,5 @@
-import express, {Request, Response} from 'express';
-import {users} from '../fixtures/users-data';
+import express, { Request, Response } from 'express';
+import { users } from '../fixtures/users-data';
 
 const userRouter = express.Router();
 
@@ -8,7 +8,7 @@ const getUsersRoute = (req: Request, res: Response) => {
 };
 
 const getUserRoute = (req: Request, res: Response) => {
-	const user = users.find(userId => userId.id === req.params.id);
+	const user = users.find(userId => { return userId.id === req.params.id; });
 	res.send(user);
 };
 

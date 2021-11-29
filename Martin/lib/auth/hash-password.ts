@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const hashPassword = async (password, saltRounds = 10) => {
 	try {
 		const salt = await bcrypt.genSalt(saltRounds);
@@ -18,10 +19,5 @@ export const comparePassword = async (password, hash) => {
 	}
 	return false;
 };
-
-// hashPassword('654321').then(r => {
-// 	comparePassword('654321', r).then(c => console.log(c));
-// });
-
 
 

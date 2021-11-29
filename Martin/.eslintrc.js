@@ -7,6 +7,7 @@ module.exports = {
 	'extends': [
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
+		'prettier'
 	],
 	'plugins': ['@typescript-eslint'],
 	'parser': '@typescript-eslint/parser',
@@ -20,8 +21,19 @@ module.exports = {
 		'no-unused-vars': 'off',
 		'@typescript-eslint/no-unused-vars': 'error',
 		'semi': ['error', 'always'],
+		'semi-spacing': 2,
 		'quotes': ['error', 'single'],
 		'arrow-spacing': 'error',
-		'block-spacing': 'error'
+		'block-spacing': 'error',
+		'object-curly-spacing': ['error', 'always'],
+		'comma-spacing': ['error', { 'before': false, 'after': true }],
+		'key-spacing': ['error', { 'afterColon': true }],
+		'arrow-body-style': ['error', 'always'],
+		'no-eq-null': 'error',
+		'space-before-function-paren': ['error', { 'anonymous': 'always', 'named': 'never', 'asyncArrow': 'always' }],
+		'keyword-spacing': 2,
+		'prefer-template': 2
+
+
 	}
 };
