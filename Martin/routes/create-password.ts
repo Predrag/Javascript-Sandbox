@@ -1,11 +1,17 @@
-import express, { Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 const createPassword = express.Router();
 
-const getGeneratePassword = async (req: Request, res: Response) => {
+export let generatedPassword;
+export const getGeneratePassword = async (req: Request, res: Response, next: NextFunction) => {
 	const payload = `${ req.body.username  }:${ req.body.password }`;
-	const base64password = Buffer.from(payload).toString('base64');
-	res.end(JSON.stringify(base64password, null, 2));
-};
+	generatedPassword = Buffer.from(payload).toString('base64');
+	if (req.header('Content-Type') === 'application/json') {
+		res.end(JSON.stringify(generatedPassword, null, 2));
+	} else {
+		next();
 
+	}
+	// return generatedPassword;
+};
 createPassword.post('/', getGeneratePassword);
 export default createPassword;

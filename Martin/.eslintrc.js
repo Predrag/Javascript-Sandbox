@@ -7,9 +7,10 @@ module.exports = {
 	'extends': [
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
-		'prettier'
+		'prettier',
+		'plugin:security/recommended'
 	],
-	'plugins': ['@typescript-eslint'],
+	'plugins': ['@typescript-eslint', 'security'],
 	'parser': '@typescript-eslint/parser',
 	'parserOptions': {
 		'ecmaVersion': 2015,

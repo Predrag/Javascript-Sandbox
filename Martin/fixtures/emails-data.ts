@@ -1,10 +1,4 @@
-interface EmailsData {
-  id: string,
-  from: string,
-  to: string,
-  subject: string,
-  body: string
-}
+import EmailsData from '../interfaces/emails.interface';
 
 export const emails: EmailsData[] = [
 	{	id: '1',
