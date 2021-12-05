@@ -2,7 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import compress from 'compression';
 import bodyParser from 'body-parser';
-import userRouter from './routes/user';
+import userRouter from './routes/user.router';
 import emailRouter from './routes/email';
 import basicAuth from './lib/auth/auth';
 import createPassword, { generatedPassword } from './routes/create-password';

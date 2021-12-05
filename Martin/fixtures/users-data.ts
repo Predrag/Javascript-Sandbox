@@ -1,14 +1,6 @@
-export interface UsersData {
-	id: string,
-	username: string
-	surname: string,
-	name: string,
-	password: string,
-	authenticated: boolean
+import UsersInterface from '../interfaces/users.interface';
 
-}
-
-export const users: UsersData[] = [
+export const users: UsersInterface[] = [
 	{
 		id: '1',
 		username: 'predrag',

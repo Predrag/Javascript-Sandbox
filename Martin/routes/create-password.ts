@@ -9,10 +9,9 @@ export const getGeneratePassword = async (req: Request, res: Response, next: Nex
 		res.end(JSON.stringify(generatedPassword, null, 2));
 	} else {
 		next();
+
 	}
-
-
+	// return generatedPassword;
 };
-
 createPassword.post('/', getGeneratePassword);
 export default createPassword;
