@@ -6,7 +6,7 @@ import userRouter from './routes/user.router';
 import basicAuth from './lib/auth/auth';
 import createPassword, { generatedPassword } from './routes/create-password';
 import requestAuth from './lib/auth/require-auth';
-import findUserByCredentials from './lib/dao/find-user';
+// import findUserByCredentials from './lib/dao/find-user';
 
 const app = express();
 app.set('view engine', 'pug');
@@ -25,8 +25,8 @@ app.use('/login', jsonParser, createPassword, (req, res) => {
         password: generatedPassword,
     });
 });
-app.use(requestAuth);
-app.use(basicAuth(findUserByCredentials));
+// app.use(requestAuth);
+// app.use(basicAuth(findUserByCredentials));
 app.use('/users', jsonParser, userRouter);
 app.get('*', function (req, res) {
     res.send('Non existing route');
