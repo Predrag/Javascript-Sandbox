@@ -3,5 +3,5 @@ export interface UsersInterface {
   surname: string;
   name: string;
   password: string;
-  authenticated: boolean;
+  authenticated: string;
 }

@@ -1,13 +1,12 @@
 import { ObjectId } from 'mongodb';
-import { connectToDatabase, cursorDB } from '../database/connectToDatabase';
 import { UsersInterface } from '../interfaces/users.interface';
-import usersCollection from '../database/collections/collections';
+import connectToDatabase from '../database/connectToDatabase';
+import UserModel from '../models/user.model';
 
 export async function findUserById(userId: string) {
   try {
     await connectToDatabase();
-    const findResult = cursorDB(usersCollection);
-    return await findResult.findOne({
+    return await UserModel.findOne({
       _id: new ObjectId(userId),
     });
   } catch (err) {
@@ -17,8 +16,7 @@ export async function findUserById(userId: string) {
 export async function findAllUsers() {
   try {
     await connectToDatabase();
-    const findResult = cursorDB(usersCollection);
-    return await findResult.find({}).toArray();
+    return await UserModel.find({});
   } catch (err) {
     return err;
   }
@@ -26,14 +24,15 @@ export async function findAllUsers() {
 export async function insertNewUser(user: UsersInterface) {
   try {
     await connectToDatabase();
-    const insertUser = cursorDB(usersCollection);
-    return await insertUser.insertOne({
+    const newUser = new UserModel({
       username: user.username,
       surname: user.surname,
       name: user.name,
       password: user.password,
-      authenticated: false,
+      authenticated: user.authenticated,
     });
+    await newUser.save();
+    return true;
   } catch (err) {
     return err;
   }

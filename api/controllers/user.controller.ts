@@ -4,7 +4,6 @@ import {
   findUserById,
   insertNewUser,
 } from '../services/user.service';
-import { closeDatabase } from '../database/connectToDatabase';
 import { UsersInterface } from '../interfaces/users.interface';
 
 export async function getAllUsers(
@@ -18,8 +17,6 @@ export async function getAllUsers(
     });
   } catch (err) {
     next(err);
-  } finally {
-    await closeDatabase();
   }
 }
 
@@ -35,8 +32,6 @@ export async function getUserById(
     });
   } catch (err) {
     next(err);
-  } finally {
-    await closeDatabase();
   }
 }
 
@@ -52,7 +47,5 @@ export async function postCreateNewUser(
     });
   } catch (err) {
     next(err);
-  } finally {
-    await closeDatabase();
   }
 }
