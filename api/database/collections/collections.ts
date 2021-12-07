@@ -1,1 +1,3 @@
-export const usersCollection = 'Users';
+const usersCollection = 'Users';
+
+export default usersCollection;

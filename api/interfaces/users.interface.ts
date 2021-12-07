@@ -1,9 +1,7 @@
 export interface UsersInterface {
-    username: string;
-    surname: string;
-    name: string;
-    password: string;
-    authenticated: boolean;
+  username: string;
+  surname: string;
+  name: string;
+  password: string;
+  authenticated: boolean;
 }
-
-export default UsersInterface;

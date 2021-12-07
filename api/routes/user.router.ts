@@ -1,8 +1,8 @@
 import express from 'express';
 import {
-    getAllUsers,
-    getUserById,
-    postCreateNewUser,
+  getAllUsers,
+  getUserById,
+  postCreateNewUser,
 } from '../controllers/user.controller';
 
 const userRouter = express.Router();
