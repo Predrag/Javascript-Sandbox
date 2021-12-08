@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import {
   findAllUsers,
-  findUserById,
+  findUserById, findUserByQuery,
   insertNewUser,
 } from '../services/user.service';
 import { UsersInterface } from '../interfaces/users.interface';
@@ -34,6 +34,20 @@ export async function getUserById(
     next(err);
   }
 }
+export async function getUserByQuery(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  const { query } = req;
+  try {
+    await findUserByQuery({ query }).then((users) => {
+      res.status(200).json(users);
+    });
+  } catch (err) {
+    next(err);
+  }
+}
 
 export async function postCreateNewUser(
   req: Request,
@@ -42,8 +56,8 @@ export async function postCreateNewUser(
 ) {
   const user: UsersInterface = req.body;
   try {
-    await insertNewUser(user).then(() => {
-      res.status(200).send('User inserted to DB');
+    await insertNewUser(user).then((insertUser) => {
+      res.status(200).json(insertUser);
     });
   } catch (err) {
     next(err);
