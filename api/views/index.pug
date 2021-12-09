@@ -3,8 +3,11 @@ html
         title= title
     body
         h1= message
-        form(action= "/login" method= "post")
-            input(type="text" placeholder="username" name="username")
-            input(type="text" placeholder="password" name="password")
+        form(action= "/users" method= "post")
+            input(type="text" placeholder="Krstne meno" name="name")
+            input(type="text" placeholder="Priezvisko" name="surname")
+            input(type="text" placeholder="Uzivatelske meno" name="username")
+            input(type="text" placeholder="Heslo" name="password")
+            input(type="text" placeholder="Autentifikacia" name="authenticated")
             input(type="submit" value="submit")
 
