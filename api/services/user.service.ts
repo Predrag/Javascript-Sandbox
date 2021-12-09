@@ -9,10 +9,19 @@ export async function findUsers(userId: any) {
   const user = userBuilder(userId);
   let userFound;
   let isEmpty;
+  let validProperties = true;
+  let invalidProperty;
   try {
+    Object.keys(userId.query).forEach((key) => {
+      if (Object.prototype.hasOwnProperty.call(user, key) !== true) {
+        validProperties = false;
+        invalidProperty = key;
+        throw new Error();
+      }
+    });
     await connectToDatabase();
     Object.keys(user).forEach((key) => { if (user[key] === undefined || user[key] === '') { delete user[key]; } });
-    if (Object.prototype.hasOwnProperty.call(user, 'id')) {
+    if (Object.prototype.hasOwnProperty.call(user, 'id') && validProperties) {
       if (mongoose.Types.ObjectId.isValid(user.id)) {
         userFound = await UserModel.find({ _id: new ObjectId(user.id) });
         isEmpty = Object.keys(userFound).length === 0;
@@ -23,12 +32,15 @@ export async function findUsers(userId: any) {
     }
     userFound = await UserModel.find(user);
     isEmpty = Object.keys(userFound).length === 0;
-    if (isEmpty !== true) {
+    if (isEmpty !== true && validProperties) {
       return userFound;
     }
     return { message: 'User not found' };
   } catch (err) {
-    return { message: err };
+    if (err instanceof Error) {
+      return { message: `You have entered incorrect parameter: ${invalidProperty}` };
+    }
+    return err;
   }
 }
 
