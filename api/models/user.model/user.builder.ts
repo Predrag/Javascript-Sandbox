@@ -6,6 +6,7 @@ function userBuilder(user) {
     name: user.query.name,
     password: user.query.password,
     authenticated: user.query.authenticated,
+    limit: user.query.limit,
   };
 }
 export default userBuilder;

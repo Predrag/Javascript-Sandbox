@@ -11,7 +11,14 @@ export async function findUsers(userId: any) {
   let isEmpty;
   let validProperties = true;
   let invalidProperty;
+  let setLimit = 3;
   try {
+    if (Object.prototype.hasOwnProperty.call(userId.query, 'limit')) {
+      if (parseInt(userId.query.limit, 10) > 4) {
+        return { message: `Max limit is set to ${setLimit}` };
+      }
+      setLimit = parseInt(userId.query.limit, 10);
+    }
     Object.keys(userId.query).forEach((key) => {
       if (Object.prototype.hasOwnProperty.call(user, key) !== true) {
         validProperties = false;
@@ -30,7 +37,7 @@ export async function findUsers(userId: any) {
         return userFound;
       } return { message: 'You have entered incorrect or not existing ID' };
     }
-    userFound = await UserModel.find(user);
+    userFound = await UserModel.find(user).limit(setLimit);
     isEmpty = Object.keys(userFound).length === 0;
     if (isEmpty !== true && validProperties) {
       return userFound;
