@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(morgan('tiny'));
+app.use(morgan('combined'));
 app.use(compress());
 app.get('/users/query/', getUserByQuery);
 app.use('/users', jsonParser, userRouter);
