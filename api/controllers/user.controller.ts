@@ -1,47 +1,16 @@
 import { NextFunction, Request, Response } from 'express';
-import {
-  findAllUsers,
-  findUserById, findUserByQuery,
-  insertNewUser,
-} from '../services/user.service';
+import mongoose from 'mongoose';
+import { findUsers, insertNewUser } from '../services/user.service';
 import { UsersInterface } from '../interfaces/users.interface';
 
-export async function getAllUsers(
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) {
-  try {
-    await findAllUsers().then((r) => {
-      res.status(200).json(r);
-    });
-  } catch (err) {
-    next(err);
-  }
-}
-
-export async function getUserById(
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) {
-  const userId = req.params.id;
-  try {
-    await findUserById(userId).then((r) => {
-      res.status(200).json(r);
-    });
-  } catch (err) {
-    next(err);
-  }
-}
-export async function getUserByQuery(
+export async function getUsers(
   req: Request,
   res: Response,
   next: NextFunction,
 ) {
   const { query } = req;
   try {
-    await findUserByQuery({ query }).then((users) => {
+    await findUsers({ query }).then((users) => {
       res.status(200).json(users);
     });
   } catch (err) {
@@ -56,6 +25,7 @@ export async function postCreateNewUser(
 ) {
   const user: UsersInterface = req.body;
   try {
+    mongoose.set('debug', true);
     await insertNewUser(user).then((insertUser) => {
       res.status(200).json(insertUser);
     });

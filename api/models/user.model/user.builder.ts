@@ -1,6 +1,6 @@
-function userBuilder(user):object {
+function userBuilder(user) {
   return {
-    _id: user.query._id,
+    id: user.query.id,
     username: user.query.username,
     surname: user.query.surname,
     name: user.query.name,
