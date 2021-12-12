@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { ObjectId } from 'mongodb';
 import { UsersInterface } from '../interfaces/users.interface';
-import connectToDatabase from '../database/connectToDatabase';
+import connectToDb from '../database/connectToDb';
 import UserModel from '../models/user.model/user.model';
 import userBuilder from '../models/user.model/user.builder';
 
@@ -29,7 +29,7 @@ export async function findUsers(userId: any) {
 				delete user[key];
 			}
 		});
-		await connectToDatabase();
+		await connectToDb();
 		if (Object.prototype.hasOwnProperty.call(user, 'id') && validProperties) {
 			if (mongoose.Types.ObjectId.isValid(user.id)) {
 				userFound = await UserModel.find({
@@ -60,7 +60,7 @@ export async function findUsers(userId: any) {
 
 export async function insertNewUser(user: UsersInterface) {
 	try {
-		await connectToDatabase();
+		await connectToDb();
 		const newUser = new UserModel({
 			username: user.username,
 			surname: user.surname,
