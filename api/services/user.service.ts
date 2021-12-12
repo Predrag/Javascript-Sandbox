@@ -24,12 +24,12 @@ export async function findUsers(userId: any) {
 				throw new Error(`You have entered incorrect parameter: ${key}`);
 			}
 		});
-		await connectToDatabase();
 		Object.keys(user).forEach((key) => {
 			if (user[key] === undefined || user[key] === '') {
 				delete user[key];
 			}
 		});
+		await connectToDatabase();
 		if (Object.prototype.hasOwnProperty.call(user, 'id') && validProperties) {
 			if (mongoose.Types.ObjectId.isValid(user.id)) {
 				userFound = await UserModel.find({
