@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <div id="parent"><span>Span</span> <strong>Strong</strong></div>
+    <script>
+        var parent = document.getElementById('parent');
+        var myFirstChild = parent.childNodes[0];
+        myFirstChild.innerHTML = 'Text';
+        console.log(myFirstChild.innerHTML);
+    </script>
+
+</body>
