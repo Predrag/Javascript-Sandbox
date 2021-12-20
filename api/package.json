@@ -11,7 +11,8 @@
         "lint": "eslint --ext .ts ./",
         "lint-fix": "eslint --ext .ts ./ --fix",
         "serve": "nodemon app.ts",
-        "start": "ts-node app.ts"
+        "serve:dev": "cross-env NODE_ENV=development npm run serve",
+        "start": "cross-env NODE_ENV=development ts-node app.ts"
     },
     "repository": {
         "type": "git",
@@ -38,6 +39,7 @@
         "@types/node": "^16.11.11",
         "@typescript-eslint/eslint-plugin": "^5.6.0",
         "@typescript-eslint/parser": "^5.6.0",
+        "cross-env": "^7.0.3",
         "eslint": "^8.4.1",
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-config-airbnb-typescript": "^16.1.0",

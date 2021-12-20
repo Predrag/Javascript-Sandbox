@@ -5,8 +5,9 @@ import mongoSanitize from 'express-mongo-sanitize';
 import bodyParser from 'body-parser';
 import userRouter from './routes/user.router';
 import HttpException from './exceptions/HttpException';
+import env from './config/env';
 
-const port = 3000;
+const { port } = env;
 const app = express();
 const jsonParser = bodyParser.json({ limit: '1mb' });
 app.use(jsonParser);

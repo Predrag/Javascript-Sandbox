@@ -1,9 +1,11 @@
 import { connect } from 'mongoose';
-import uri from './db.url';
+import env from '../config/env';
+
+
 
 const connectToDb: () => Promise<void> = async () => {
 	try {
-		await connect(uri);
+		await connect(env.uri);
 		return true;
 	} catch (err) {
 		return err;
