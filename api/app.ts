@@ -7,7 +7,7 @@ import userRouter from './routes/user.router';
 import HttpException from './exceptions/HttpException';
 import env from './config/env';
 
-const { port } = env;
+const { PORT } = env;
 const app = express();
 const jsonParser = bodyParser.json({ limit: '1mb' });
 app.use(jsonParser);
@@ -29,8 +29,8 @@ app.use('/users', userRouter);
 app.get('*', (req, res) => {
 	res.send('Non existing route');
 });
-app.listen(port, () => {
-	console.log('Express listening on port: ', port);
+app.listen(PORT || 3000, () => {
+	console.log('Express listening on port: ', PORT);
 });
 
 module.exports = app;
