@@ -1,0 +1,18 @@
+{
+  "name": "javascript-sandbox",
+  "version": "1.0.0",
+  "description": "javascript sandbox tutorial",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run serve:dev --workspace=api"
+  },
+  "workspaces": [
+    "api"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com//Predrag/Javascript-Sandbox.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
