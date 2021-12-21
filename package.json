@@ -4,7 +4,7 @@
   "description": "javascript sandbox tutorial",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run serve:dev --workspace=api"
+    "start": "cd api && npm run serve:dev"
   },
   "workspaces": [
     "api"
