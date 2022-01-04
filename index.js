@@ -1,4 +1,4 @@
-const myPrint = () => {
-    console.log("myPrint function called successfully");
+const myPrint = (message) => {
+    console.log("myPrint function called successfully with message: " + message);
 }
-myPrint();
+myPrint('completed');
