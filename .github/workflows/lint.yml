@@ -5,10 +5,10 @@ on:
   # but only for the main branch
   push:
     branches:
-      - mdurisin
+      - develop
   pull_request:
     branches:
-      - mdurisin
+      - develop
 
 jobs:
   run-linters:
