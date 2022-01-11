@@ -8,4 +8,5 @@ jobs:
   Call-Explore-GitHub-Actions:
     uses: Predrag/Javascript-Sandbox/.github/workflows/github-actions-demo.yml@develop
     secrets:
-        tajomstvo: ${{ secrets.tajomstvo }}
+        tajomstvo: ${{ secrets.TAJOMSTVO }}
+
