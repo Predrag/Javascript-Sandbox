@@ -6,4 +6,4 @@ on:
 
 jobs:
   Call-Explore-GitHub-Actions:
-    uses: Predrag/Javascript-Sandbox/./.github/workflows/call-workflow.yml@develop
+    uses: Predrag/Javascript-Sandbox/.github/workflows/github-actions-demo.yml@develop
