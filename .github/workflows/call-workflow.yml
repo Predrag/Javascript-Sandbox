@@ -1,0 +1,9 @@
+name: Call GitHub Actions Demo
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  Call-Explore-GitHub-Actions:
+    uses: Predrag/Javascript-Sandbox/./.github/workflows/call-workflow.yml@develop
