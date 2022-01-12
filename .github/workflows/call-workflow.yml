@@ -1,0 +1,12 @@
+name: Call GitHub Actions Demo
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  Call-Explore-GitHub-Actions:
+    uses: Predrag/Javascript-Sandbox/.github/workflows/github-actions-demo.yml@develop
+    secrets:
+        tajomstvo: ${{ secrets.TAJOMSTVO }}
+

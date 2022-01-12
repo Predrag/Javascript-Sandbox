@@ -1,20 +1,21 @@
 {
   "name": "javascript-sandbox",
   "version": "1.0.0",
-  "description": "First-Attempt-Script",
-  "main": "index.js",
+  "description": "javascript sandbox tutorial",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "print-test": "node index.js"
+    "start": "cd api && npm run serve:dev"
   },
+  "workspaces": [
+    "api"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Predrag/Javascript-Sandbox.git"
+    "url": "https://github.com//Predrag/Javascript-Sandbox.git"
   },
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Predrag/Javascript-Sandbox/issues"
-  },
-  "homepage": "https://github.com/Predrag/Javascript-Sandbox#readme"
+  "license": "ISC"
 }
