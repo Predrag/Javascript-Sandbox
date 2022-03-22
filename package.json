@@ -8,7 +8,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "cd api && npm run serve:dev",
-    "start:prod": "npm install --g cross-env && cd api && npm run start:prod"
+    "start-prod": "npm install --g cross-env && cd api && npm run start:prod"
   },
   "workspaces": [
     "api"
