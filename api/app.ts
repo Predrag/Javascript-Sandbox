@@ -23,7 +23,7 @@ app.use(morgan('combined'));
 app.use(compress());
 
 app.get('/', (req, res) => {
-	res.render('index');
+	res.render('index', {message: 'Registracny formular'});
 });
 app.use('/users', userRouter);
 app.get('*', (req, res) => {
