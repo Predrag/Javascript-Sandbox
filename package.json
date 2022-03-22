@@ -7,7 +7,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm install --g cross-env && cd api && npm run serve:dev"
+    "start": "npm install --g cross-env && cd api && npm run serve"
   },
   "workspaces": [
     "api"
