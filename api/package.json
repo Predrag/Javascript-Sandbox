@@ -12,7 +12,7 @@
         "lint-fix": "eslint --ext .ts ./ --fix",
         "serve": "nodemon app.ts",
         "serve:dev": "cross-env NODE_ENV=development npm run serve",
-        "start": "cross-env NODE_ENV=development ts-node app.ts"
+        "start:prod": "cross-env NODE_ENV=development ts-node app.ts"
     },
     "repository": {
         "type": "git",
