@@ -5,7 +5,7 @@ import connectToDb from '../database/connectToDb';
 import UserModel from '../models/user.model/user.model';
 import userBuilder from '../models/user.model/user.builder';
 
-export async function findUsers(userId: any) {
+export async function findUsersService(userId: any) {
 	const user = userBuilder(userId);
 	let userFound;
 	let isEmpty;
@@ -58,7 +58,7 @@ export async function findUsers(userId: any) {
 	}
 }
 
-export async function insertNewUser(user: UsersInterface) {
+export async function insertNewUserService(user: UsersInterface) {
 	try {
 		await connectToDb();
 		const newUser = new UserModel({
@@ -76,5 +76,17 @@ export async function insertNewUser(user: UsersInterface) {
 		return { User: newUser, message: `${newUser.username} was inserted` };
 	} catch (err) {
 		return { message: err };
+	}
+}
+export async function deleteAllUsersService() {
+	try {
+		await connectToDb()
+		let users = await UserModel.find({});
+		for (let i=0; i < await UserModel.find({}).countDocuments({}); i++) {
+
+			await UserModel.deleteMany({username: users[i].username})
+		} return { message: 'Deleted all records'}
+	} catch (e) {
+		return e
 	}
 }
