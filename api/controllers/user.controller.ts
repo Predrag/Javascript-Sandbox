@@ -1,30 +1,30 @@
 import { NextFunction, Request, Response } from 'express';
-import {deleteAllUsersService, findUsers, insertNewUser} from '../services/user.service';
+import {deleteAllUsersService, findUsersService, insertNewUserService} from '../services/user.service';
 import { UsersInterface } from '../interfaces/users.interface';
 
-export async function getUsers (req: Request, res: Response, next: NextFunction) {
+export async function getUsersController (req: Request, res: Response, next: NextFunction) {
 	const { query } = req;
 	let foundedUser;
 	try {
-		foundedUser =  await findUsers({ query }).then((users) => res.status(200).json(users));
+		foundedUser =  await findUsersService({ query }).then((users) => res.status(200).json(users));
 	} catch (err) {
 		next(err);
 	}
 	return foundedUser
 }
 
-export async function postCreateNewUser(req: Request, res: Response, next: NextFunction) {
+export async function postCreateNewUserController(req: Request, res: Response, next: NextFunction) {
 	const user: UsersInterface = req.body;
 	let insertedUser;
 	try {
-		insertedUser = await insertNewUser(user).then((insertUser) => insertUser);
+		insertedUser = await insertNewUserService(user).then((insertUser) => insertUser);
 	} catch (err) {
 		next(err);
 	}
 	return insertedUser
 }
 
-export async function deleteAllUsers (req: Request, res: Response, next: NextFunction) {
+export async function deleteAllUsersController (req: Request, res: Response, next: NextFunction) {
 	let foundedUser;
 	try {
 		foundedUser =  await deleteAllUsersService().then((users) => res.status(200).json(users));

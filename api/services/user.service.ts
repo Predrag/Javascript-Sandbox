@@ -5,7 +5,7 @@ import connectToDb from '../database/connectToDb';
 import UserModel from '../models/user.model/user.model';
 import userBuilder from '../models/user.model/user.builder';
 
-export async function findUsers(userId: any) {
+export async function findUsersService(userId: any) {
 	const user = userBuilder(userId);
 	let userFound;
 	let isEmpty;
@@ -58,7 +58,7 @@ export async function findUsers(userId: any) {
 	}
 }
 
-export async function insertNewUser(user: UsersInterface) {
+export async function insertNewUserService(user: UsersInterface) {
 	try {
 		await connectToDb();
 		const newUser = new UserModel({
