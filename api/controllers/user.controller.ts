@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { findUsers, insertNewUser } from '../services/user.service';
+import {deleteAllUsersService, findUsers, insertNewUser} from '../services/user.service';
 import { UsersInterface } from '../interfaces/users.interface';
 
 export async function getUsers (req: Request, res: Response, next: NextFunction) {
@@ -22,4 +22,14 @@ export async function postCreateNewUser(req: Request, res: Response, next: NextF
 		next(err);
 	}
 	return insertedUser
+}
+
+export async function deleteAllUsers (req: Request, res: Response, next: NextFunction) {
+	let foundedUser;
+	try {
+		foundedUser =  await deleteAllUsersService().then((users) => res.status(200).json(users));
+	} catch (err) {
+		next(err);
+	}
+	return foundedUser
 }

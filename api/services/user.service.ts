@@ -78,3 +78,15 @@ export async function insertNewUser(user: UsersInterface) {
 		return { message: err };
 	}
 }
+export async function deleteAllUsersService() {
+	try {
+		await connectToDb()
+		let users = await UserModel.find({});
+		for (let i=0; i < await UserModel.find({}).countDocuments({}); i++) {
+
+			await UserModel.deleteMany({username: users[i].username})
+		} return { message: 'Deleted all records'}
+	} catch (e) {
+		return e
+	}
+}

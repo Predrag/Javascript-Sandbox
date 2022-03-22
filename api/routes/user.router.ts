@@ -1,5 +1,5 @@
 import express from 'express';
-import { getUsers, postCreateNewUser } from '../controllers/user.controller';
+import {deleteAllUsers, getUsers, postCreateNewUser} from '../controllers/user.controller';
 
 const userRouter = express.Router();
 
@@ -12,5 +12,6 @@ userRouter.post('/', async (req, res, next) => {
 		res.render('sendPassword', { password: await users.User });
 	}
 });
+userRouter.delete('/', deleteAllUsers)
 
 export default userRouter;
