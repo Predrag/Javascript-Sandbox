@@ -81,9 +81,12 @@ export async function insertNewUserService(user: UsersInterface) {
 export async function deleteAllUsersService() {
 	try {
 		await connectToDb()
-		let users = await UserModel.find({});
-		for (let i=0; i < await UserModel.find({}).countDocuments({}); i++) {
+		const users = await UserModel.find({});
+		const countDocuments = await UserModel.find({}).countDocuments({})
+		// eslint-disable-next-line no-plusplus
+		for (let i=0; i < countDocuments; i++) {
 
+			// eslint-disable-next-line no-await-in-loop
 			await UserModel.deleteMany({username: users[i].username})
 		} return { message: 'Deleted all records'}
 	} catch (e) {
