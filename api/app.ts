@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import userRouter from './routes/user.router';
 import HttpException from './exceptions/HttpException';
 import env from './config/env';
+import numberRouter from "./routes/numbers.router";
 
 const { PORT } = env;
 const app = express();
@@ -26,6 +27,7 @@ app.get('/', (req, res) => {
 	res.render('index', {message: 'Registracny formular'});
 });
 app.use('/users', userRouter);
+app.use('/numbers', numberRouter);
 app.get('*', (req, res) => {
 	res.send('Non existing route');
 });
